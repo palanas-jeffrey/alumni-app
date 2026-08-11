@@ -1,0 +1,16 @@
+<div>
+    <div>
+        <div class="p-6 w-full d-flex flex-wrap justify-between">
+            @foreach($fields as $field)
+                @livewire('survey.report.components.responses-in-graph', 
+                    ['field_id' => $field->id, 'program_id' => $program_id, 'batch_year' => $batch_year, 'survey_period_id' => $period_id])
+            @endforeach
+        </div>
+
+        <div class="section-report-table">
+            @livewire('survey.report.components.responses-in-table', 
+                ['section_id' => $section_id, 'program_id' => $program_id, 'form_id' => $form_id, 'batch_year' => $batch_year, 'survey_period_id' => $period_id])
+        </div>
+
+    </div>
+</div>

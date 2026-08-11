@@ -1,0 +1,173 @@
+.ml--16 {
+    margin-left: -16px;
+}
+
+.mb--16 {
+    margin-bottom: -16px;
+}
+
+.mt-30 {
+    margin-top: 30px;
+}
+
+.mt-120 {
+    margin-top: 120px;
+}
+
+.border-dark-blue {
+    border-color: #1e3148;
+}
+
+.bg-dust-gray {
+    background-color: #f3f2f0;
+}
+
+.bg-light-gray {
+    background-color: #D3D3D3;
+}
+
+.bg-cool-gray {
+    background-color: #B0C4DE;
+}
+
+.bg-mint-green {
+    background-color: #8efc9f;
+}
+
+.bg-dark-blue {
+    background-color: #1e3148;
+}
+
+.bg-pastel-yellow {
+    background-color: #FFF5BA;
+}
+
+/* gradient */
+.bg-g-bg {
+    background: #36D1DC;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #5B86E5, #36D1DC);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+/* typography */
+.x-large-title {
+    font-size: 36px;
+    line-height: 48px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.large-title {
+    font-size: 30px;
+    line-height: 43px;
+    font-family: "PT Serif", serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.txt-12 {
+    font-size: 12px;;
+}
+
+.txt-16 {
+    font-size: 16px;;
+}
+
+.txt-18 {
+    font-size: 18px;;
+}
+
+.txt-20 {
+    font-size: 20px;
+}
+
+.txt-24 {
+    font-size: 24px;
+}
+
+.txt-28 {
+    font-size: 28px;
+}
+
+.txt-32 {
+    font-size: 32px;
+}
+
+.txt-36 {
+    font-size: 36px;
+}
+
+.txt-48 {
+    font-size: 48px;
+}
+
+.txt-70 {
+    font-size: 70px;
+}
+
+.txt-ice {
+    color: #e0f2fe;
+}
+
+.line-height-normal {
+    line-height: normal;
+}
+
+.w-18 {
+    width: 18px;
+}
+
+.w-40p {
+    width: 40%;
+}
+
+.w-55p {
+    width: 55%;
+}
+
+.w-65p {
+    width: 65%;
+}
+
+.w-66p {
+    width: 66%;
+}
+
+/* min-width */
+.min-w-70p {
+    min-width: 70%;
+}
+
+/* max-width */
+.max-w-1200 {
+    max-width: 1200px;
+}
+
+.max-h-90 {
+    max-height: 90px;
+}
+
+.max-h-32rm {
+    max-height: 32.5rem;
+}
+
+.max-h-40vh {
+    max-height: 40vh;
+}
+
+.h-225 {
+    height: 225px;
+}
+
+.min-h-70vh {
+    min-height: 70vh;
+}
+
+.l-shadow {
+    box-shadow: 0px 8px 20px 0px rgba(19, 28, 53, 0.20);
+}
+
+.v-hidden {
+    visibility: hidden;
+}

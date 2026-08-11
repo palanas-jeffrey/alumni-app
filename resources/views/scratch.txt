@@ -1,0 +1,130 @@
+        function sendActivationEmailNotice(id) {
+            console.log(id);
+            fetch( "{{ route('send-account-activation-email') }}" , {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                },
+                body: JSON.stringify({
+                    user_id: id
+                })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP status ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Email sent successfully!');
+                if (data.success) {
+                    showToast('Email sent successfully!');
+                } else {
+                    showToast('Encountered issue while sending the mail.');
+                }
+
+                setTimeout(function(){
+                    window.location.reload();
+                }, 1500);
+                
+            })
+            .catch(error => { 
+                console.log('Error sending: ' + error);
+                showToast('Encountered issue while sending the mail.');
+            });
+        }
+
+
+                function initFormCTA() {
+            var ctaBtn = document.querySelector("#modalFormCTA #saveEventBtn");
+
+            ctaBtn.addEventListener("click", function(e) {
+                var actionUrl = ctaBtn.closest("#modalFormCTA").action;
+                e.preventDefault();
+
+                fetch( actionUrl , {
+                    method: 'PUT',
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') // Laravel CSRF token
+                    }
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP status ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        console.log('Saved successfully!');
+                        showToast('Account activated successfully! Sending an email now to the user');
+                        const segments = actionUrl.split('/');
+                        const id = segments[segments.length - 1];
+                        sendActivationEmailNotice(id);
+                    } else {
+                        showToast('Encountered issues while processing activation.');
+                    }
+                })
+                .catch(error => {
+                    showToast('Encountered issues while processing activation.');
+                    console.log('Error saving event: ' + error);
+                });
+            });
+        }
+
+
+               const modalText = {
+            grantAccess: {
+                heading : "Are you certain you want to grant administrator access?",
+                details: "This will allow the user to make changes to your system."
+            },
+            activateAccount: {
+                heading : "Would you like to activate this account?",
+                details: "This will grant the user view access to the system."
+            },
+        }
+
+        function setupModal(action, ctaUrl) {
+            var modalEl = document.querySelector('#CTAModal');
+            var modal = bootstrap.Modal.getOrCreateInstance(modalEl);
+            var heading = modalEl.querySelector('#modalHeadingtxt');
+            var details = modalEl.querySelector('#details');
+            var form = modalEl.querySelector('#modalFormCTA');
+
+            if (action == "grant-admin-access") {
+                heading.textContent = modalText.grantAccess.heading;
+                details.textContent = modalText.grantAccess.details;
+                form.setAttribute("action", ctaUrl);
+            } else {
+                heading.textContent = modalText.activateAccount.heading;
+                details.textContent = modalText.activateAccount.details;
+                form.setAttribute("action", ctaUrl);
+            }
+
+            modal.show();
+        }
+
+
+            <script>
+ 
+
+
+        function initPageEvents() {
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains("modal-trigger")) {
+                    var action = e.target.getAttribute("data-action");
+                    var ctaUrl = e.target.getAttribute('data-ctaUrl');
+                    setupModal(action, ctaUrl);
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initPageEvents();
+        });
+    </script>
+
+
+        <!-- account settings modal -->
+    @include('shared.modalCTA')

@@ -1,0 +1,29 @@
+<?php
+
+namespace App\Livewire\Tracer\Components;
+
+use Livewire\Component;
+use App\Models\FormSectionField;
+
+class Field extends Component
+{
+    public $section_id;
+    public $fields;
+
+    public function mount($section_id)
+    {
+        $this->section_id = $section_id;
+        $this->loadFields();
+    }
+
+    public function loadFields()
+    {
+        $this->fields = FormSectionField::where('section_id', $this->section_id)
+            ->orderBy('order')
+            ->get();
+    }
+    public function render()
+    {
+        return view('livewire.tracer.components.field');
+    }
+}
