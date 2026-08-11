@@ -84,6 +84,12 @@ Create symlink to show images
   php artisan storage:link 
 ```
 
+Seeding the DB
+
+```bash
+   php artisan db:seed --class=DatabaseSeeder
+```
+
 ## Documentation references
 
 [Laravel](https://laravel.com/docs/13.x)
