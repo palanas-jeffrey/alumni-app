@@ -4,6 +4,7 @@ namespace App\Livewire\Configuration;
 
 use Livewire\Component;
 use App\Models\BatchYear;
+use Illuminate\Validation\Rule;
 
 class BatchList extends Component
 {
@@ -28,8 +29,13 @@ class BatchList extends Component
             'batch_year' => [
                 'required',
                 'regex:/^\d{4}-\d{4}$/',
-                'unique:batch_year,batch_year',
+                Rule::unique('batch_year', 'batch_year'),
                 function ($attribute, $value, $fail) {
+                    if (strpos($value, '-') === false) {
+                        // If no dash, regex should already fail, but we prevent PHP error
+                        return;
+                    }
+
                     [$start, $end] = explode('-', $value);
                     if ((int)$end !== (int)$start + 1) {
                         $fail('The second year must be exactly one year after the first.');
@@ -45,6 +51,15 @@ class BatchList extends Component
         $this->loadBatches();
         $this->dispatch('batch-year-added');
         $this->batch_year = '';
+    }
+
+    protected function messages()
+    {
+        return [
+            'batch_year.required' => 'Please enter a batch year.',
+            'batch_year.regex' => 'Format must be YYYY-YYYY (e.g., 2012-2013).',
+            'batch_year.unique' => 'This batch year already exists.',
+        ];
     }
 
     public function delete($id)
