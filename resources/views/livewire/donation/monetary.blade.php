@@ -61,7 +61,6 @@
                         <th scope="col">Amount</th>
                         <th scope="col">Acknowledgment</th>
                         <th scope="col">Date</th>
-                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -114,7 +113,7 @@
                             </tr>
                         @endforeach
                     @else
-                        <tr><td colspan="8">No payments found.</td></tr>
+                        <tr><td colspan="9">No payments found.</td></tr>
                     @endif
                 </tbody>
             </table>
