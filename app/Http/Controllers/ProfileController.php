@@ -46,6 +46,9 @@ class ProfileController extends Controller
                 'uploadRoute' => $uploadRoute
             ]);
         }
+
+        // Fallback: Redirect if no guard is logged in
+        return redirect()->route('login');
     }
 
     public function update(Request $request): RedirectResponse
