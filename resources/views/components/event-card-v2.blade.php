@@ -27,7 +27,7 @@
                 @if ($uaEvent->photo->photo_path)
                     <div>
                         <div class="event-img" 
-                            style="background-image: url('{{ asset('public/storage/' . $uaEvent->photo->photo_path) }}"></div>
+                            style="background-image: url('{{ asset('storage/' . $uaEvent->photo->photo_path) }}"></div>
                     </div>
                 @endif
             @endif

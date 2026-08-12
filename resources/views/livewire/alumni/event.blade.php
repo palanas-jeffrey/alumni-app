@@ -32,7 +32,7 @@
                             @foreach ($incomingEvents as $incomingEvent)
                                 <div class="carousel-item {{ $loop->index == 0 ? 'active' : '' }}"
                                     @if ($incomingEvent->photo)
-                                        style="background-image: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(255, 255, 255, 0.1) 50%), url({{ asset('public/storage/' . $incomingEvent->photo->photo_path) }})"
+                                        style="background-image: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(255, 255, 255, 0.1) 50%), url({{ asset('storage/' . $incomingEvent->photo->photo_path) }})"
                                     @endif
                                     >
                                     <div class="carousel-caption d-none d-md-block">
