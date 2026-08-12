@@ -286,13 +286,14 @@
             })
             .then(async response => {
                 const result = await response.json();
+                console.log('Server response for in-kind donation:', result);
 
                 if (response.status === 422) {
                     // Validation errors
                     let messages = Object.values(result.errors)
                         .map(errorArray => errorArray.join(' '))
                         .join('\n');
-                    showToast('Validation Error:\n' + messages);
+                    showToast('Validation Error:\n' + messages, false);
                 } else if (result.success) {
                     showToast('Donation saved successfully!');
                     setTimeout(() => {
@@ -300,12 +301,12 @@
                     }, 1500);
                     resetForm();
                 } else {
-                    showToast('Error: ' + (result.message || 'Unknown error occurred.'));
+                    showToast('Error: ' + (result.message || 'Unknown error occurred.'), false);
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
-                showToast('There was an error processing your donation. Please try again.');
+                showToast('There was an error processing your donation. Please try again.', false);
             });
         }
         
@@ -351,12 +352,12 @@
                     resetForm();
                 } else {
                     alert('Error: ' + result.message);
-                    showToast('Error: ' + result.message);
+                    showToast('Error: ' + result.message, false);
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
-                showToast('There was an error processing your donation. Please try again.');
+                showToast('There was an error processing your donation. Please try again.', false);
             });
         }
 
@@ -380,14 +381,14 @@
                         paymongo_reference_no = data.linkDetails.attributes.reference_number;
                         showPaymentModal(data.checkout_url);
                     } else {
-                        showToast("Invalid JSON response");
+                        showToast("Invalid JSON response", false);
                     }
                 })
                 .catch(error => {
-                    showToast("Process failed");
+                    showToast("Process failed", false);
                 });
             } else {
-                showToast("Required data is not set.");
+                showToast("Required data is not set.", false);
             }
         }
 
