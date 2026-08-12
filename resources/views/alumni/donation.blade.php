@@ -286,7 +286,6 @@
             })
             .then(async response => {
                 const result = await response.json();
-                console.log('Server response for in-kind donation:', result);
 
                 if (response.status === 422) {
                     // Validation errors
