@@ -74,7 +74,7 @@ Start the server
   composer run dev
 ```
 
-Database server
+## Database server
 
 Make sure the database server is running.
 
@@ -84,7 +84,7 @@ Create symlink to show images
   php artisan storage:link 
 ```
 
-Seeding the DB
+## Seeding the DB
 
 ```bash
    php artisan db:seed --class=DatabaseSeeder
