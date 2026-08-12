@@ -24,7 +24,7 @@
             </div>
         
             <div class="mb-2 p-2 w-1/3">
-                <x-input-label for="maiden_name" :value="__('Maiden Name (last name & first name)')" />
+                <x-input-label for="maiden_name" :value="__('Maiden Name (firstname & lastname)')" />
                 <x-text-input id="maiden_name" class="block mt-1 w-full" type="text" name="maiden_name" 
                     wire:model.lazy="maiden_name"  autofocus autocomplete="maiden_name" />
                 <x-input-error :messages="$errors->get('maiden_name')" class="mt-2" />

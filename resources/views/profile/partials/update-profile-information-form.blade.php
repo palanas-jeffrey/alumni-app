@@ -37,7 +37,7 @@
             </div>
      
             <div class="w-50">
-                <x-input-label for="maiden_name" :value="__('Maiden Name (last name & first name)')" />
+                <x-input-label for="maiden_name" :value="__('Maiden Name (firstname & lastname)')" />
                 <x-text-input id="maiden_name" name="maiden_name" type="text" class="mt-1 block w-full" :value="old('maiden_name', $user->maiden_name)" autofocus autocomplete="maiden_name" />
                 <x-input-error class="mt-2" :messages="$errors->get('maiden_name')" />
             </div>
